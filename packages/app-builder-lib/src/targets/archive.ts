@@ -37,7 +37,7 @@ export async function tar(compression: CompressionLevel | any | any, format: str
   }
 
   const args = compute7zCompressArgs(format === "tar.xz" ? "xz" : (format === "tar.bz2" ? "bzip2" : "gzip"), {
-    isRegularFile: true,
+    isRegularFile: false,
     method: "DEFAULT",
     compression,
   })
@@ -139,6 +139,7 @@ export function compute7zCompressArgs(format: string, options: ArchiveOptions = 
     // but archive should be the same regardless where produced
     args.push("-mcu")
   }
+  args.push("-mtm=off", "-mta=off")
   return args
 }
 
