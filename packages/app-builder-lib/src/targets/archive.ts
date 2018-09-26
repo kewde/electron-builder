@@ -140,6 +140,7 @@ export function compute7zCompressArgs(format: string, options: ArchiveOptions = 
     args.push("-mcu")
   }
   args.push("-mtm=off", "-mta=off")
+  console.log(args);
   return args
 }
 
